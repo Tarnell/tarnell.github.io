@@ -1,0 +1,27 @@
+.headerElement {
+  display: flex;
+  justify-content: center;
+  font-weight: bolder;
+  width: 100%;
+  text-align: center;
+  
+
+  padding: 20px 0px;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: grey;
+  }
+}
+
+.elementContent {
+
+}
+
+@media (min-width:768px) {
+  .headerElement {
+    width: 10%;
+    flex-direction: row;
+  }
+}
