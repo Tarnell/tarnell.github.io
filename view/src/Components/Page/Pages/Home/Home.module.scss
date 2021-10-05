@@ -1,0 +1,53 @@
+$text-color: white;
+$text-font: 'Times New Roman', Times, serif;
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./HomePageBackground.jpg');
+  height: 890px;
+  width: 100%;
+  max-width:2122px;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+
+  // Remove this
+  height: 700px;
+
+  border: 10px black;
+  border-style: double;
+  background-color: rgba(0,0,0, 0.4);
+  border-radius: 10px;
+}
+
+.headerWrapper {
+  width: 80%;
+  padding-top: 10px;
+  margin: 0px auto;
+}
+
+.header {
+  font-size: 36px;
+  color: $text-color;
+  font-family: $text-font;
+  font-style: italic;
+}
+
+.copyWrapper {
+  width: 80%;
+  margin: auto;
+  font-family: $text-font;
+  color: $text-color;
+
+  font-size: 18px;
+}
+
+.copy {
+  font-size: 18px;
+
+}

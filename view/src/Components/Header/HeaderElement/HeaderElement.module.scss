@@ -4,19 +4,26 @@
   font-weight: bolder;
   width: 100%;
   text-align: center;
-  
 
   padding: 20px 0px;
-
   cursor: pointer;
 
-  &:hover {
-    background-color: grey;
+  @media (min-width:768px) {
+      width: 10%;
+      flex-direction: row;
   }
 }
-@media (min-width:768px) {
-  .headerElement {
-    width: 10%;
-    flex-direction: row;
-  }
+
+.selectedElement {
+  @extend .headerElement;
+
+  color: black;
+  font-weight: bolder;
+}
+
+.unselectedElement {
+  @extend .headerElement;
+  
+  color: grey;
+  font-style: italic;
 }
