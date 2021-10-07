@@ -1,15 +1,14 @@
 import React from 'react';
-import styles from './BrandLogo.module.scss';
+import useDictionary from '../../Hooks/useDictionary';
 
-const LOGO_TEXT_TOP = 'Tarnell & Autumn\'s';
-const LOGO_TEXT_BOTTOM = 'Wedding';
+import styles from './BrandLogo.module.scss';
 
 const BrandLogo = () => (
   <div className={styles.brandLogo}>
     <span className={styles.logoText}>
-      {LOGO_TEXT_TOP}
+      {useDictionary('tarnell_and_autumn')}
       <br />
-      {LOGO_TEXT_BOTTOM}
+      {useDictionary('wedding')}
     </span>
   </div>
 );
