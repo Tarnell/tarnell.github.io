@@ -6,20 +6,27 @@ import BrandLogo from '../BrandLogo/BrandLogo';
 
 import styles from './Header.module.scss';
 
-const Header = ({ selectedPage, changePageFn }) => (
-  <div className={styles.header}>
-    <BrandLogo />
-    <div className={styles.headerElementWrapper}>
-      <HeaderElement {...{ selectedPage }} content="Home" index={0} changePageFn={changePageFn} />
-      <HeaderElement {...{ selectedPage }} content="Gallery" index={1} changePageFn={changePageFn} />
-      <HeaderElement {...{ selectedPage }} content="Wedding" index={2} changePageFn={changePageFn} />
-      <HeaderElement {...{ selectedPage }} content="Getting There" index={3} changePageFn={changePageFn} />
-      <HeaderElement {...{ selectedPage }} content="Registry" index={4} changePageFn={changePageFn} />
-      <HeaderElement {...{ selectedPage }} content="RSVP" index={5} changePageFn={changePageFn} />
-    </div>
-  </div>
-);
+const elementNames = ['Home', 'Gallery', 'Wedding', 'Getting There', 'Registry', 'RSVP'];
 
+const Header = ({ selectedPage, changePageFn }) => {
+  const getHeaderElements = () => elementNames.map((element, index) => (
+    <HeaderElement
+      {...{ selectedPage }}
+      content={element}
+      index={index}
+      changePageFn={changePageFn}
+    />
+  ));
+
+  return (
+    <div className={styles.header}>
+      <BrandLogo />
+      <div className={styles.headerElementWrapper}>
+        {getHeaderElements()}
+      </div>
+    </div>
+  );
+};
 Header.propTypes = {
   pageName: PropTypes.string.isRequired,
   selectedPage: PropTypes.string.isRequired,
