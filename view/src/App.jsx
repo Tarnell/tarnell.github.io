@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Header from './Components/Header/Header';
-import Page from './Components/Page/Page';
+import { Header, Page } from './Components';
 
 import styles from './App.module.scss';
 

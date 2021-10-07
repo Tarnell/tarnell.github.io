@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import HeaderElement from './HeaderElement/HeaderElement';
+import HeaderElement from './HeaderElement';
 import BrandLogo from '../BrandLogo/BrandLogo';
 
 import styles from './Header.module.scss';
