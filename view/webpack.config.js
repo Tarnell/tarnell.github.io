@@ -38,6 +38,9 @@ module.exports = () => ({
         include: path.resolve(__dirname, 'src'),
         exclude: /node_modules/,
         resolve: {
+          alias: {
+            app: path.resolve(__dirname, 'src/'),
+          },
           extensions: ['.js', '.jsx', '.scss'],
         },
         use: [{

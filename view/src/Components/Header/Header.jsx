@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import HeaderElement from './HeaderElement';
-import BrandLogo from '../BrandLogo/BrandLogo';
+import { BrandLogo } from 'app/Components';
 
+import HeaderElement from './HeaderElement';
 import styles from './Header.module.scss';
 
 const elementNames = ['Home', 'Gallery', 'Wedding', 'Getting There', 'Registry', 'RSVP'];

@@ -1,5 +1,5 @@
 import React from 'react';
-import useDictionary from '../../Hooks/useDictionary';
+import useDictionary from 'app/Hooks/useDictionary';
 
 import styles from './BrandLogo.module.scss';
 

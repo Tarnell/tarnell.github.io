@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Header, Page } from './Components';
+import { Header, Page } from 'app/Components';
 import DictionaryProvider from './Hooks/provider/DictionaryProvider';
 
 import styles from './App.module.scss';

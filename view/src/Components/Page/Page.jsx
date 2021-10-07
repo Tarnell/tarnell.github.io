@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Home from './Pages/Home/Home';
 
+import Home from './Pages/Home/Home';
 import styles from './Page.module.scss';
 
 const getPage = (selectedPage) => {
