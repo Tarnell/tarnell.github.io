@@ -1,5 +1,4 @@
 $text-color: white;
-$text-font: 'Times New Roman', Times, serif;
 
 .home {
   display: flex;
@@ -35,14 +34,12 @@ $text-font: 'Times New Roman', Times, serif;
 .header {
   font-size: 36px;
   color: $text-color;
-  font-family: $text-font;
   font-style: italic;
 }
 
 .copyWrapper {
   width: 80%;
   margin: auto;
-  font-family: $text-font;
   color: $text-color;
 
   font-size: 18px;
