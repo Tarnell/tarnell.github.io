@@ -6,14 +6,14 @@ import styles from './HeaderElement.module.scss';
 const HeaderElement = ({
   content, selectedPage, index, changePageFn,
 }) => {
-  const isSelected = content === selectedPage;
+  const isSelected = index === selectedPage;
   return (
     <div
       className={isSelected ? styles.selectedElement : styles.unselectedElement}
       role="button"
       tabIndex={index}
-      onClick={() => changePageFn(content)}
-      onKeyDown={() => changePageFn(content)}
+      onClick={() => changePageFn(index)}
+      onKeyDown={() => changePageFn(index)}
     >
       <span
         className={styles.elementContent}
@@ -26,7 +26,7 @@ const HeaderElement = ({
 
 HeaderElement.propTypes = {
   content: PropTypes.string.isRequired,
-  selectedPage: PropTypes.string.isRequired,
+  selectedPage: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
   changePageFn: PropTypes.func.isRequired,
 };

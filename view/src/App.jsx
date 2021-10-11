@@ -5,7 +5,7 @@ import DictionaryProvider from './Hooks/provider/DictionaryProvider';
 import styles from './App.module.scss';
 
 function App() {
-  const [selectedPage, setSelectedPage] = useState('Home');
+  const [selectedPage, setSelectedPage] = useState(0);
   return (
     <div className={styles.App}>
       <DictionaryProvider>

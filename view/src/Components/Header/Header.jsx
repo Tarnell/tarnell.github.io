@@ -6,7 +6,7 @@ import { BrandLogo } from 'app/Components';
 import HeaderElement from './HeaderElement';
 import styles from './Header.module.scss';
 
-const elementNames = ['Home', 'Gallery', 'Wedding', 'Getting There', 'Registry', 'RSVP'];
+const elementNames = ['Home', 'Gallery', 'Seating', 'Getting There', 'Registry', 'RSVP'];
 
 const Header = ({ selectedPage, changePageFn }) => {
   const getHeaderElements = () => elementNames.map((element, index) => (

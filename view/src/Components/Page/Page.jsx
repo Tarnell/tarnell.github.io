@@ -5,12 +5,13 @@ import Home from './Pages/Home/Home';
 import styles from './Page.module.scss';
 
 const getPage = (selectedPage) => {
-  if (selectedPage === 'Home') {
+  if (selectedPage === 0) {
     return <Home />;
   }
 
   return <span>{selectedPage}</span>;
 };
+
 const Page = ({ selectedPage }) => (
   <div className={styles.page}>
     {getPage(selectedPage)}
@@ -18,7 +19,7 @@ const Page = ({ selectedPage }) => (
 );
 
 Page.propTypes = {
-  selectedPage: PropTypes.string.isRequired,
+  selectedPage: PropTypes.number.isRequired,
 };
 
 export default Page;
