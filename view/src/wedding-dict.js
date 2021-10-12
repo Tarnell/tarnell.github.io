@@ -1,17 +1,13 @@
 export default {
+  announcement_header: 'Guess what!',
+  announcement_content: 'We are going to get married and now you have to come to our wedding',
+  gallery_intro: 'We are in the gallery now, dudes',
+  header_invite: 'We Cordially Invite You To The Wedding of Autumn and Tarnell',
+  information_itinerary: 'Information & Itinerary',
+  invite_details: 'Save The Date: August 19, 2023',
+  itinerary: 'Where am I going? What Time do I need to be there? Check the FAQ!',
+  rsvp_heading: 'RSVP',
+  rsvp_details: "To RSVP do this thing that I haven't programmed yet",
   tarnell_and_autumn: "Tarnell & Autumn's",
   wedding: 'Wedding',
-  header_invite: 'We Cordially Invite You To The Wedding of Autumn and Tarnell',
-  gallery_intro: 'We are in the gallery now, dudes',
-  invite_details: 'It is a long established fact that a reader will be '
-  + 'distracted by the readable content of a page when '
-  + 'looking at its layout. The point of using Lorem '
-  + 'Ipsum is that it has a more-or-less normal distribution '
-  + "of letters, as opposed to using 'Content here, content here' "
-  + 'making it look like readable English. Many desktop publishing '
-  + 'packages and web page editors now use Lorem Ipsum as their '
-  + "default model text, and a search for 'lorem ipsum' will "
-  + 'uncover many web sites still in their infancy. Various versions '
-  + 'have evolved over the years, sometimes by accident, sometimes on '
-  + 'purpose (injected humour and the like).',
 };

@@ -11,9 +11,9 @@ const elementNames = ['Home', 'Gallery', 'Seating', 'Getting There', 'Registry',
 const Header = ({ selectedPage, changePageFn }) => {
   const getHeaderElements = () => elementNames.map((element, index) => (
     <HeaderElement
-      {...{ selectedPage }}
+      {...{ selectedPage, index }}
+      key={element}
       content={element}
-      index={index}
       changePageFn={changePageFn}
     />
   ));
@@ -28,8 +28,7 @@ const Header = ({ selectedPage, changePageFn }) => {
   );
 };
 Header.propTypes = {
-  pageName: PropTypes.string.isRequired,
-  selectedPage: PropTypes.string.isRequired,
+  selectedPage: PropTypes.number.isRequired,
   changePageFn: PropTypes.func.isRequired,
 };
 
