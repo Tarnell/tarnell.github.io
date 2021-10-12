@@ -2,6 +2,7 @@ export default {
   tarnell_and_autumn: "Tarnell & Autumn's",
   wedding: 'Wedding',
   header_invite: 'We Cordially Invite You To The Wedding of Autumn and Tarnell',
+  gallery_intro: 'We are in the gallery now, dudes',
   invite_details: 'It is a long established fact that a reader will be '
   + 'distracted by the readable content of a page when '
   + 'looking at its layout. The point of using Lorem '

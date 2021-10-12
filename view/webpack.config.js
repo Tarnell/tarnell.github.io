@@ -61,6 +61,10 @@ module.exports = () => ({
         }],
       },
       {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+      {
         test: /\.module\.[a-z]+$/,
         include: path.resolve(__dirname, 'src'),
         exclude: /node_modules/,
