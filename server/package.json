@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "wedding-server",
   "version": "1.0.0",
   "description": "back end service for wedding-site",
   "main": "index.js",
@@ -25,5 +25,8 @@
   "devDependencies": {
     "nodemon": "^2.0.13",
     "webpack": "^5.55.1"
-  }
+  },
+  "keywords": [
+    "no"
+  ]
 }

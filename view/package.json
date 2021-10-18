@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "main": "src/index.js",
   "private": true,
+  "proxy": "http://localhost:5000/",
   "dependencies": {
     "@babel/core": "^7.12.17",
     "@babel/preset-env": "^7.12.17",
@@ -45,6 +46,7 @@
   },
   "homepage": "https://github.com/Tarnell/wedding-website#readme",
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.15.8",
     "babel-eslint": "^10.1.0",
     "sass": "^1.42.1",
     "sass-loader": "^12.1.0",

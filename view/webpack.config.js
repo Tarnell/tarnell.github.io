@@ -19,6 +19,13 @@ module.exports = () => ({
     hotUpdateChunkFilename: '[id]-[hash].hot-update.js',
   },
   devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
     contentBase: path.resolve(__dirname, 'dist'),
     open: true,
     clientLogLevel: 'silent',
@@ -51,6 +58,9 @@ module.exports = () => ({
                 targets: 'defaults',
               }],
               '@babel/preset-react',
+            ],
+            plugins: [
+              ['@babel/transform-runtime'],
             ],
           },
         }, {

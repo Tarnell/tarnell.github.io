@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { Footer } from 'app/Components';
 import { Gallery, Home } from './Pages';
 import styles from './Page.module.scss';
 
@@ -19,6 +19,7 @@ const getPage = (selectedPage) => {
 const Page = ({ selectedPage }) => (
   <div className={styles.page}>
     {getPage(selectedPage)}
+    <Footer />
   </div>
 );
 
