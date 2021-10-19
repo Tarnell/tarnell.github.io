@@ -1,30 +1,50 @@
 import React, { useEffect, useState } from 'react';
+
+// import { Buffer } from 'buffer';
 import useDictionary from 'app/Hooks/useDictionary';
 import { ImageContainer } from 'app/Components';
 import styles from './Gallery.module.scss';
 
-const Gallery = () => {
-  const [serverMessage, setServerMessage] = useState('');
-
-  const fetchApi = async () => {
-    const response = await fetch('/api/hello', {
+const fetchImage = async () => {
+  try {
+    const response = await fetch('api/getImages', {
+      method: 'GET',
+      mode: 'cors',
+      cache: 'no-cache',
       headers: {
-        accepts: 'application/json',
+        'Content-Type': 'image/jpeg',
       },
     });
-    const body = await response.json();
+    const blob = await response.blob();
+    return [URL.createObjectURL(blob), null];
+  } catch (error) {
+    console.error(`getImages: error occurred ${error}`);
+    return [null, error];
+  }
+};
 
-    if (response.status !== 200) throw Error(body.message);
-
-    return body;
-  };
+const Gallery = () => {
+  const [image1, setImage1] = useState(undefined);
+  const [image2, setImage2] = useState(undefined);
+  const [image3, setImage3] = useState(undefined);
+  const [image4, setImage4] = useState(undefined);
 
   useEffect(() => {
-    fetchApi()
-      .then((res) => {
-        setServerMessage(res.message);
-      })
-      .catch((err) => console.log(err));
+    async function fetchData() {
+      const [response, error] = await fetchImage();
+      if (error) {
+        console.log(error);
+      } else {
+        debugger;
+        console.log(`got response ${response}`);
+        setImage1(response);
+        setImage2(response);
+        setImage3(response);
+        setImage4(response);
+      }
+    }
+
+    fetchData();
   }, []);
 
   return (
@@ -36,7 +56,10 @@ const Gallery = () => {
         <ImageContainer />
       </div>
       <div className={styles.copyFromServer}>
-        <span>{serverMessage}</span>
+        <img src={image1} alt="test" />
+        <img src={image2} alt="test" />
+        <img src={image3} alt="test" />
+        <img src={image4} alt="test" />
       </div>
     </div>
   );
