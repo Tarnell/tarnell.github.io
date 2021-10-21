@@ -5,7 +5,7 @@ import useDictionary from 'app/Hooks/useDictionary';
 import styles from './HomePageSection.module.scss';
 
 const HomePageSection = ({
-  image, imageAltText, sectionHeading, sectionContent, imageOnRight,
+  image, imageAltText, imageOnRight, sectionHeading, sectionContent,
 }) => (
   <div className={imageOnRight ? styles.sectionWithImageOnRight : styles.sectionWithImageOnLeft}>
     <div className={styles.imageWrapper}>

@@ -1,6 +1,18 @@
 .gallery {
+  display:block;
   height: 100%;
   width: 100%;
 
+  background-color: white;
+}
+
+.copyFromServer {
+  display: block;
   background-color: pink;
+  min-height: 232px;
+  min-height: 232px;
+}
+
+.copyFromServer:after {
+  content: '\200b';
 }
