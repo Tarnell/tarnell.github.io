@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './GalleryItem.module.scss';
+
 const fetchImage = async (asset) => {
   try {
     const response = await fetch(`api/getImages?asset=${asset}`, {
@@ -44,7 +46,7 @@ const GalleryItem = ({ assetNumber }) => {
   }, [assetNumber]);
 
   return loaded && (
-    <img src={image} alt="test" />
+    <img className={styles.galleryItem} src={image} alt="test" />
   );
 };
 
