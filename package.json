@@ -1,19 +1,78 @@
 {
+  "name": "wedding-website",
+  "author": "Tarnell",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tarnell/wedding-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tarnell/wedding-website/issues"
+  },
+  "homepage": "https://github.com/Tarnell/wedding-website#readme",
+  "description": "Front end react application for wedding-website project",
+  "version": "0.1.0",
+  "main": "server/server.js",
+  "private": true,
+  "proxy": "http://localhost:5000/",
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
   },
+  "scripts": {
+    "build": "webpack build --config ./server/view/webpack.config.js",
+    "start": "nodemon ./server/server.js localhost 5000",
+    "develop": "webpack serve",
+    "lint": "eslint ."
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@babel/core": "^7.12.17",
+    "@babel/preset-env": "^7.12.17",
+    "@babel/preset-react": "^7.12.13",
+    "axios": "^0.23.0",
+    "babel-loader": "^8.2.2",
+    "body-parser": "^1.19.0",
+    "buffer": "^6.0.3",
+    "cors": "^2.8.5",
+    "css-loader": "^6.3.0",
+    "eslint-loader": "^4.0.2",
+    "express": "^4.17.1",
+    "mini-css-extract-plugin": "^2.3.0",
+    "node-sass": "^6.0.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "serve-index": "^1.9.1"
+  },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.15.8",
+    "babel-eslint": "^10.1.0",
     "eslint": "^7.20.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^4.2.0"
-  },
-  "dependencies": {
-    "babel-eslint": "^10.1.0"
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^2.0.13",
+    "sass": "^1.42.1",
+    "sass-loader": "^12.1.0",
+    "webpack": "^5.55.1",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.5.0"
   }
 }

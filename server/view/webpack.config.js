@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = () => ({
   plugins: [
@@ -9,11 +10,15 @@ module.exports = () => ({
       chunkFilename: 'css/[name].chunk.css',
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Wedding website',
+      template: './server/view/index.html',
+    }),
   ],
   mode: 'development',
-  entry: path.resolve(__dirname, 'src', 'index.js'),
+  entry: path.resolve(__dirname, './', 'index.js'),
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
     // filename: '[name]-[contenthash:8].js',
     // chunkFilename: '[name]-[contenthash:8].chunk.js',
     hotUpdateChunkFilename: '[id]-[hash].hot-update.js',
@@ -26,7 +31,7 @@ module.exports = () => ({
         secure: false,
       },
     },
-    contentBase: path.resolve(__dirname, 'dist'),
+    contentBase: path.resolve(__dirname, '../dist'),
     open: true,
     clientLogLevel: 'silent',
     port: 9000,
@@ -42,11 +47,11 @@ module.exports = () => ({
     rules: [
       {
         test: /\.(jsx|js)$/,
-        include: path.resolve(__dirname, 'src'),
+        include: path.resolve(__dirname, './'),
         exclude: /node_modules/,
         resolve: {
           alias: {
-            app: path.resolve(__dirname, 'src/'),
+            app: path.resolve(__dirname, './'),
           },
           extensions: ['.js', '.jsx', '.scss'],
         },
@@ -76,7 +81,7 @@ module.exports = () => ({
       },
       {
         test: /\.module\.[a-z]+$/,
-        include: path.resolve(__dirname, 'src'),
+        include: path.resolve(__dirname, './'),
         exclude: /node_modules/,
         use: [
           {

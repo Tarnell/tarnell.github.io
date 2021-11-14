@@ -1,19 +1,26 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const serveIndex = require('serve-index');
+const cors = require('cors');
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './dist/index.html'));
+});
 
 app.get('/api/hello', (req, res) => {
   res.json({ message: 'Hello From Express!' });
 });
 
 app.get('/api/getImages', (req, res) => {
-  const assets = fs.readdirSync('./images');
+  const assets = fs.readdirSync('../images');
   const imageURLs = [];
 
   const { page, limit } = req.query;
@@ -32,6 +39,9 @@ app.get('/api/getImages', (req, res) => {
   res.end(JSON.stringify(responseObject));
 });
 
+app.use('/', express.static('dist/*'));
+app.use('/', serveIndex('dist'));
+
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Example app listening at ${port}`);
 });
