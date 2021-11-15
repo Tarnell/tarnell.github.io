@@ -17,14 +17,12 @@
   "proxy": "http://localhost:5000/",
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "scripts": {
     "build": "webpack build --config ./server/view/webpack.config.js",
-    "start": "nodemon ./server/server.js localhost 5000",
-    "develop": "webpack serve",
+    "start": "nodemon ./server/server.js",
     "lint": "eslint ."
   },
   "browserslist": {
@@ -55,8 +53,7 @@
     "node-sass": "^6.0.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "serve-index": "^1.9.1"
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.15.8",

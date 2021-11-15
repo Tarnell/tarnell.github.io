@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const serveIndex = require('serve-index');
 const cors = require('cors');
 
 const port = process.env.PORT || 5000;
@@ -39,8 +38,7 @@ app.get('/api/getImages', (req, res) => {
   res.end(JSON.stringify(responseObject));
 });
 
-app.use('/', express.static('dist/*'));
-app.use('/', serveIndex('dist'));
+app.use('/', express.static(path.join(__dirname, '/dist')));
 
 app.listen(port, () => {
   console.log(`Example app listening at ${port}`);
