@@ -21,8 +21,9 @@
     ]
   },
   "scripts": {
-    "build": "webpack build --config ./server/view/webpack.config.js",
-    "start": "nodemon ./server/server.js",
+    "prestart": "webpack build --config ./server/view/webpack.config.js",
+    "open-dev": "start http://localhost:5000",
+    "start": "yarn run open-dev && nodemon ./server/server.js",
     "lint": "eslint ."
   },
   "browserslist": {

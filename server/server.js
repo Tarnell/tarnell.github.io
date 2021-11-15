@@ -10,8 +10,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
+app.use('/', express.static(path.join(__dirname, '/dist')));
+
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, './dist/index.html'));
+  res.sendFile(path.join(__dirname, '/dist/index.html'));
 });
 
 app.get('/api/hello', (req, res) => {
@@ -37,8 +39,6 @@ app.get('/api/getImages', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.end(JSON.stringify(responseObject));
 });
-
-app.use('/', express.static(path.join(__dirname, '/dist')));
 
 app.listen(port, () => {
   console.log(`Example app listening at ${port}`);
