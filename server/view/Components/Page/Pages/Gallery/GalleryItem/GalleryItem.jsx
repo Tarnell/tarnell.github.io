@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import styles from './GalleryItem.module.scss';
 
-const fetchImage = async (asset) => {
+const fetchImage = async (assetId) => {
   try {
-    const response = await fetch(`api/getImages?asset=${asset}`, {
+    const response = await fetch(`api/getImage?assetId=${assetId}`, {
       method: 'GET',
       mode: 'cors',
       cache: 'no-cache',
@@ -22,36 +22,30 @@ const fetchImage = async (asset) => {
   }
 };
 
-const GalleryItem = ({ assetNumber }) => {
+const GalleryItem = ({ assetId }) => {
   const [loaded, setLoaded] = useState(false);
   const [image, setImage] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const imagesFromServer = [];
-      const [response, error] = await fetchImage(assetNumber);
-      if (error) {
-        console.log(error);
-      } else {
-        console.log(`got response ${response}`);
-        imagesFromServer.push(response);
-      }
-      return imagesFromServer;
+      const [response] = await fetchImage(assetId);
+
+      return response;
     }
 
     fetchData().then((res) => {
       setImage(res);
       setLoaded(true);
     });
-  }, [assetNumber]);
+  }, [assetId]);
 
   return loaded && (
-    <img className={styles.galleryItem} src={image} alt="test" />
+    <img className={`${styles.galleryItem} card-img-top`} key={assetId} src={image} alt="test" />
   );
 };
 
 GalleryItem.propTypes = {
-  assetNumber: PropTypes.number.isRequired,
+  assetId: PropTypes.string.isRequired,
 };
 
 export default GalleryItem;

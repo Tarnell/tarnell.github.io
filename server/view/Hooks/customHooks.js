@@ -1,21 +1,13 @@
 import { useEffect, useCallback, useRef } from 'react';
 // make API calls and pass the returned data via dispatch
-export const useFetch = (data, dispatch) => {
+export const useFetchNextAvailableAssets = (data, dispatch) => {
   useEffect(() => {
     dispatch({ type: 'FETCHING_IMAGES', fetching: true });
-    fetch(`https://picsum.photos/v2/list?page=${data.page}&limit=10`)
-      .then((res) => res.body)
-      .then((rb) => {
-        const reader = rb.getReader();
-        const images = [];
-        reader.read().then(({ done, value }) => {
-          if (done) {
-            images.push(value);
-            dispatch({ type: 'STACK_IMAGES', images });
-            dispatch({ type: 'FETCHING_IMAGES', fetching: false });
-            debugger;
-          }
-        });
+    fetch(`/api/getImages?page=${data.page}&limit=${data.limit}`)
+      .then((res) => res.json())
+      .then((images) => {
+        dispatch({ type: 'STACK_IMAGES', images });
+        dispatch({ type: 'FETCHING_IMAGES', fetching: false });
       })
       .catch((e) => {
         dispatch({ type: 'FETCHING_IMAGES', fetching: false });

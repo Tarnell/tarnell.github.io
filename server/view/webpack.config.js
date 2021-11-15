@@ -22,21 +22,7 @@ module.exports = () => ({
     // filename: '[name]-[contenthash:8].js',
     // chunkFilename: '[name]-[contenthash:8].chunk.js',
     hotUpdateChunkFilename: '[id]-[hash].hot-update.js',
-  },
-  devServer: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:5000',
-        changeOrigin: true,
-        secure: false,
-      },
-    },
-    contentBase: path.resolve(__dirname, '../dist'),
-    open: true,
-    clientLogLevel: 'silent',
-    port: 9000,
-    historyApiFallback: true,
-    hot: true,
+    clean: true,
   },
   devtool: 'cheap-module-source-map',
   performance: {

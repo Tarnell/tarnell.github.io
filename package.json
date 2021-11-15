@@ -21,10 +21,11 @@
     ]
   },
   "scripts": {
-    "prestart": "webpack build --config ./server/view/webpack.config.js",
     "open-dev": "start http://localhost:5000",
-    "start": "yarn run open-dev && nodemon ./server/server.js",
-    "lint": "eslint ."
+    "poststart": "webpack build --watch --config ./server/view/webpack.config.js",
+    "start"        : "npm-run-all --parallel watch:server watch:build",
+    "watch:build"  : "webpack build --watch --config ./server/view/webpack.config.js",
+    "watch:server" : "nodemon ./server/server.js"
   },
   "browserslist": {
     "production": [
@@ -67,6 +68,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
     "nodemon": "^2.0.13",
+    "npm-run-all": "^4.1.5",
     "sass": "^1.42.1",
     "sass-loader": "^12.1.0",
     "webpack": "^5.55.1",

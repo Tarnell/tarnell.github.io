@@ -7,10 +7,9 @@ const port = process.env.PORT || 5000;
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 app.use(cors());
 
-app.use('/', express.static(path.join(__dirname, '/dist')));
+app.use(express.static(path.join(__dirname, '/dist')));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/dist/index.html'));
@@ -20,9 +19,18 @@ app.get('/api/hello', (req, res) => {
   res.json({ message: 'Hello From Express!' });
 });
 
+app.get('/api/getImage', (req, res) => {
+  const { assetId } = req.query;
+
+  console.log(`Getting image ${assetId}`);
+  const filePath = path.join(__dirname, `/images/${assetId}`);
+
+  res.sendFile(filePath);
+});
+
 app.get('/api/getImages', (req, res) => {
-  const assets = fs.readdirSync('../images');
-  const imageURLs = [];
+  const assets = fs.readdirSync(path.join(__dirname, '/images'));
+  const images = [];
 
   const { page, limit } = req.query;
 
@@ -30,14 +38,13 @@ app.get('/api/getImages', (req, res) => {
   const end = start + parseInt(limit, 10);
 
   for (let i = start; i < end; i += 1) {
-    const fullpath = path.join(__dirname, `./images/${assets[end]}`);
-
-    imageURLs.push(fullpath);
+    images.push({
+      assetId: assets[i],
+    });
   }
 
-  const responseObject = { urls: imageURLs };
   res.setHeader('Content-Type', 'application/json');
-  res.end(JSON.stringify(responseObject));
+  res.end(JSON.stringify(images));
 });
 
 app.listen(port, () => {
