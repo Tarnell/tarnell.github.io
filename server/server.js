@@ -22,7 +22,6 @@ app.get('/api/hello', (req, res) => {
 app.get('/api/getImage', (req, res) => {
   const { assetId } = req.query;
 
-  console.log(`Getting image ${assetId}`);
   const filePath = path.join(__dirname, `/images/${assetId}`);
 
   res.sendFile(filePath);
@@ -34,7 +33,7 @@ app.get('/api/getImages', (req, res) => {
 
   const { page, limit } = req.query;
 
-  const start = parseInt(page, 10) * 10;
+  const start = parseInt(page, 10) * limit;
   const end = start + parseInt(limit, 10);
 
   for (let i = start; i < end; i += 1) {
