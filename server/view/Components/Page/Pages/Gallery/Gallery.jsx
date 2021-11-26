@@ -1,9 +1,7 @@
-/* eslint-disable no-lone-blocks */
-/* eslint-disable array-callback-return */
-/* eslint-disable camelcase */
-import React, { useReducer, useRef } from 'react';
+import React, { useReducer, useRef, useState } from 'react';
 
-import { useFetchNextAvailableAssets, useInfiniteScroll, useLazyLoading } from 'app/Hooks/customHooks';
+import { useFetchNextAvailableAssets, useInfiniteScroll } from 'app/Hooks/customHooks';
+import FocusFrame from './FocusFrame/FocusFrame';
 import GalleryItem from './GalleryItem/GalleryItem';
 
 import styles from './Gallery.module.scss';
@@ -35,51 +33,38 @@ const Gallery = () => {
   const bottomBoundaryRef = useRef(null);
 
   useFetchNextAvailableAssets(pager, imgDispatch);
-  useLazyLoading('.card-img-top', imgData.images);
   useInfiniteScroll(bottomBoundaryRef, pagerDispatch);
 
+  const [focusedImage, setFocusedImage] = useState(null);
+
   return (
-    <div className={styles.gallery}>
-      <div id="images" className="container">
-        {imgData.fetching && (
+    <div
+      className={styles.gallery}
+    >
+      { focusedImage && (
+        <FocusFrame
+          image={focusedImage}
+          unFocusCallback={() => setFocusedImage(null)}
+        />
+      )}
+      <div className={styles.container}>
         <div className={styles.copyFromServer}>
-          <p>Getting images</p>
-        </div>
-        )}
-        <div id="page-bottom-boundary" style={{ border: '1px solid red' }} ref={bottomBoundaryRef} />
-        <div className={styles.copyFromServer}>
-          {imgData.images.map((image) => {
+          {imgData.images.map((image, index) => {
             const { assetId } = image;
             return typeof assetId !== 'undefined' && (
-              <GalleryItem key={assetId} {...{ assetId }} />
+              <GalleryItem
+                key={assetId}
+                {...{ assetId }}
+                focusIndex={index}
+                focusImageCallback={setFocusedImage}
+              />
             );
           })}
         </div>
+        <div id="page-bottom-boundary" ref={bottomBoundaryRef} />
       </div>
     </div>
   );
 };
 
 export default Gallery;
-
-{ /* <div className={styles.gallery}>
-<div className={styles.intro}>
-  <span>{useDictionary('gallery_intro')}</span>
-</div>
-<div className={styles.imageContainer}>
-  <ImageContainer />
-</div>
-<div className={styles.copyFromServer}>
-  {imgData.images.map((image) => {
-    const { author, download_url } = image;
-
-    return (
-      <img
-        alt={author}
-        src={download_url}
-      />
-    );
-  })}
-  ;
-</div>
-{/* { getImages() } */ }

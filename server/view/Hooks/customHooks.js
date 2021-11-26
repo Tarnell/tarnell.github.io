@@ -1,4 +1,24 @@
 import { useEffect, useCallback, useRef } from 'react';
+
+export const useFetchAsset = async (assetId) => {
+  try {
+    const response = await fetch(`api/getImage?assetId=${assetId}`, {
+      method: 'GET',
+      mode: 'cors',
+      cache: 'no-cache',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const blob = await response.blob();
+    return URL.createObjectURL(blob);
+  } catch (error) {
+    console.error(`getImages: error occurred ${error}`);
+    return error;
+  }
+};
+
 // make API calls and pass the returned data via dispatch
 export const useFetchNextAvailableAssets = (data, dispatch) => {
   useEffect(() => {

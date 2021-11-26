@@ -15,11 +15,6 @@
   "main": "server/server.js",
   "private": true,
   "proxy": "http://localhost:5000/",
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
-  },
   "scripts": {
     "open-dev": "start http://localhost:5000",
     "poststart": "webpack build --watch --config ./server/view/webpack.config.js",

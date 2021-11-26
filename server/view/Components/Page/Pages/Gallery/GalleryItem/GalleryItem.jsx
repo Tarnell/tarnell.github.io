@@ -1,51 +1,49 @@
 import React, { useEffect, useState } from 'react';
+import { useFetchAsset } from 'app/Hooks/customHooks';
 import PropTypes from 'prop-types';
 
 import styles from './GalleryItem.module.scss';
 
-const fetchImage = async (assetId) => {
-  try {
-    const response = await fetch(`api/getImage?assetId=${assetId}`, {
-      method: 'GET',
-      mode: 'cors',
-      cache: 'no-cache',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    const blob = await response.blob();
-    return [URL.createObjectURL(blob), null];
-  } catch (error) {
-    console.error(`getImages: error occurred ${error}`);
-    return [null, error];
-  }
-};
-
-const GalleryItem = ({ assetId }) => {
+const GalleryItem = ({ assetId, focusIndex, focusImageCallback }) => {
   const [loaded, setLoaded] = useState(false);
-  const [image, setImage] = useState([]);
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
-    async function fetchData() {
-      const [response] = await fetchImage(assetId);
-
-      return response;
-    }
-
-    fetchData().then((res) => {
+    useFetchAsset(assetId).then((res) => {
       setImage(res);
       setLoaded(true);
     });
   }, [assetId]);
 
-  return loaded && (
-    <img className={`${styles.galleryItem} card-img-top`} key={assetId} src={image} alt="test" />
-  );
+  const focusImage = () => {
+    focusImageCallback(image);
+  };
+
+  return (loaded ? (
+    <div
+      className={styles.galleryItemContainer}
+      role="button"
+      tabIndex={focusIndex}
+      onClick={focusImage}
+      onKeyPress={focusImage}
+    >
+      <img
+        className={`${styles.galleryItem} card-img-top`}
+        key={assetId}
+        src={image}
+        alt="test"
+      />
+    </div>
+
+  ) : (
+    <div className={styles.galleryItemContainer} key={assetId} />
+  ));
 };
 
 GalleryItem.propTypes = {
   assetId: PropTypes.string.isRequired,
+  focusIndex: PropTypes.number.isRequired,
+  focusImageCallback: PropTypes.func.isRequired,
 };
 
 export default GalleryItem;
