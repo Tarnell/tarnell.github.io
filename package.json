@@ -18,9 +18,9 @@
   "scripts": {
     "open-dev": "start http://localhost:5000",
     "poststart": "webpack build --watch --config ./server/view/webpack.config.js",
-    "start"        : "npm-run-all --parallel watch:server watch:build",
-    "watch:build"  : "webpack build --watch --config ./server/view/webpack.config.js",
-    "watch:server" : "nodemon ./server/server.js"
+    "start": "npm-run-all --parallel watch:server watch:build",
+    "watch:build": "webpack build --watch --config ./server/view/webpack.config.js",
+    "watch:server": "nodemon ./server/server.js"
   },
   "browserslist": {
     "production": [
@@ -47,6 +47,7 @@
     "eslint-loader": "^4.0.2",
     "express": "^4.17.1",
     "mini-css-extract-plugin": "^2.3.0",
+    "mongodb": "^4.2.1",
     "node-sass": "^6.0.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",

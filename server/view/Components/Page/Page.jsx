@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Footer } from 'app/Components';
-import { Gallery, Home } from './Pages';
+import { Gallery, Home, Rsvp } from './Pages';
 import styles from './Page.module.scss';
 
 const getPage = (selectedPage) => {
@@ -11,6 +11,10 @@ const getPage = (selectedPage) => {
 
   if (selectedPage === 1) {
     return <Gallery />;
+  }
+
+  if (selectedPage === 5) {
+    return <Rsvp />;
   }
 
   return <span>{selectedPage}</span>;

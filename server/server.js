@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
+// get MongoDB driver connection
+const dbo = require('./db/conn');
 
 const port = process.env.PORT || 5000;
 const app = express();
@@ -15,8 +17,27 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/dist/index.html'));
 });
 
-app.get('/api/hello', (req, res) => {
-  res.json({ message: 'Hello From Express!' });
+app.post('/api/writeGuest', (req, res) => {
+  const dbConnect = dbo.getDb();
+
+  const { firstName, lastName, rsvpStatus } = req.query;
+
+  const guestRsvp = {
+    first_name: firstName,
+    last_name: lastName,
+    rsvp_status: rsvpStatus,
+  };
+
+  dbConnect
+    .collection('guests')
+    .insertOne(guestRsvp, (err, result) => {
+      if (err) {
+        res.status(400).send('Error inserting guest!');
+      } else {
+        console.log(`Added a new guest with id ${result.insertedId}`);
+        res.status(204).send();
+      }
+    });
 });
 
 app.get('/api/getImage', (req, res) => {
@@ -46,6 +67,14 @@ app.get('/api/getImages', (req, res) => {
   res.end(JSON.stringify(images));
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at ${port}`);
+dbo.connectToServer((err) => {
+  if (err) {
+    console.error(err);
+    process.exit();
+  }
+
+  // start the Express server
+  app.listen(port, () => {
+    console.log(`Server is running on port: ${port}`);
+  });
 });
