@@ -7,7 +7,8 @@ const BrandLogo = () => (
   <div className={styles.brandLogo}>
     <span className={styles.logoText}>
       {useDictionary('tarnell_and_autumn')}
-      <br />
+    </span>
+    <span className={styles.logoText}>
       {useDictionary('wedding')}
     </span>
   </div>

@@ -1,6 +1,6 @@
 .brandLogo {
   display: flex;
-  flex-grow: 1;
+  flex-direction: column;
 
   justify-content: center;
   
@@ -9,8 +9,6 @@
 
 .logoText {
   display: block;
-  margin: auto;
 
   text-transform: uppercase;
-  width: 60%;
 }
