@@ -15,6 +15,13 @@
   padding: 10px 0px;
 }
 
+.email {
+  width: 100%;
+  max-width: 300px;
+  margin: auto;
+  padding: 10px 0px;
+}
+
 .dietarySelection {
   display: flex;
   flex-direction: column;
@@ -29,6 +36,17 @@
   display: flex;
   flex-direction: column;
   width: 300px;
-  text-align: right;
+  text-align: center;
   margin: auto;
+
+  font-size: 2rem;
+}
+
+.attendanceItem {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.25rem;
+
+  width: 100%;
+  margin: 10px 0px;
 }

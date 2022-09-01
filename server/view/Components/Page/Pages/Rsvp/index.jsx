@@ -31,11 +31,6 @@ const Rsvp = () => {
   const [attending, setAttending] = useState(0);
   const [children, setChildren] = useState('');
 
-  // eslint-disable-next-line no-restricted-globals
-  const pageParams = qs.parse(location.search);
-  const firstNames = pageParams.firstNames ? pageParams.firstNames.split(' ') : ['', ''];
-  const lastName = pageParams.lastName || '';
-
   const onChildrenChange = (e) => {
     setChildren(e.currentTarget.value);
   };
@@ -45,54 +40,51 @@ const Rsvp = () => {
     if (newValue >= 0 && newValue <= 2) {
       setAttending(newValue);
     }
-    console.log(attending);
   };
-
-  const getIndividualSections = () => firstNames.map((firstName, index) => {
-    const name = lastName ? `${firstName} ${lastName}` : firstName;
-
-    return (
-      <IndividualSection
-        index={index}
-        name={name}
-        attendingCallback={updateAttending}
-      />
-    );
-  });
 
   return (
     <div className={styles.rsvp}>
       <h1>Kindly reply by July 01, 2023</h1>
       <section className={styles.eventDetails}>
-        <span>Event Address: </span>
-        <span>Contact Us At : (403) 903-3319 or landrwedding@gmail.com </span>
+        <span>
+          <a className={styles.email} href="mailto: landrwedding@gmail.com">Contact Us</a>
+        </span>
       </section>
-      {
-        getIndividualSections()
-      }
+      <IndividualSection
+        index={1}
+        attendingCallback={updateAttending}
+      />
+      <IndividualSection
+        index={2}
+        attendingCallback={updateAttending}
+      />
       { attending > 0 && (
       <>
-        <div className={styles.transportation}>
-          <h4>Will you need transportation arranged to reach the venue?</h4>
+        <div className={styles.section}>
+          <h4 className={styles.sectionHeading}>
+            Will you need transportation arranged to reach the venue?
+          </h4>
           <label
-            className={styles.transportationOption}
+            className={styles.sectionOption}
             htmlFor="need_transportation"
           >
             Need transportation
             <input type="radio" id="need_transportation" name="transportation" value="NEED_TRANSPORT" />
           </label>
           <label
-            className={styles.transportationOption}
+            className={styles.sectionOption}
             htmlFor="no_transportation"
           >
             I will get there myself
             <input type="radio" id="no_transportation" name="transportation" value="NO_TRANSPORT" />
           </label>
         </div>
-        <div className={styles.childSupport}>
-          <h4>Will you be accompanied by children?</h4>
+        <div className={styles.section}>
+          <h4 className={styles.sectionHeading}>
+            Will you be accompanied by children?
+          </h4>
           <label
-            className={styles.childOption}
+            className={styles.sectionOption}
             htmlFor="yes_children"
           >
             Yes
@@ -101,19 +93,6 @@ const Rsvp = () => {
               id="yes_children"
               name="children"
               value="YES"
-              onChange={onChildrenChange}
-            />
-          </label>
-          <label
-            className={styles.childOption}
-            htmlFor="declining"
-          >
-            No
-            <input
-              type="radio"
-              id="no_children"
-              name="children"
-              value="NO"
               onChange={onChildrenChange}
             />
           </label>
@@ -126,6 +105,19 @@ const Rsvp = () => {
               </>
             )
           }
+          <label
+            className={styles.sectionOption}
+            htmlFor="declining"
+          >
+            No
+            <input
+              type="radio"
+              id="no_children"
+              name="children"
+              value="NO"
+              onChange={onChildrenChange}
+            />
+          </label>
         </div>
       </>
       )}

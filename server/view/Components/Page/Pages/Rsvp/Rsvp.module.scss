@@ -1,7 +1,13 @@
 .rsvp {
+  background: linear-gradient(0deg, rgba(58, 58, 58, 0.8), rgba(58, 58, 58, 0.8)), url('../Common/Background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   padding: 100px;
+
+  color: white;
 }
 
 input[type=text] {
@@ -19,35 +25,30 @@ input[type=text] {
   flex-direction: column;
 }
 
-.transportation {
+.section {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin: auto;
+  font-size: 1.5rem;
 }
 
-.transportationOption {
+.sectionOption {
   display: flex;
-  justify-content: right;
-  width: 200px;
-  margin: auto;
+  justify-content: space-between;
+  font-size: 1.25rem;
+
+  width: 300px;
+  margin: 10px auto;
 }
 
 .submitSection {
   margin-top: 20px;
 }
 
-.childSupport {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-}
-
-.childOption {
-  display: flex;
-  justify-content: right;
-  width: 50px;
-  margin: auto;
-}
+.sectionHeading {
+  width: 500px;
+};
 
 .button{
   width: 135px;
@@ -63,4 +64,8 @@ input[type=text] {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+}
+
+.email {
+  color:lightblue;
 }

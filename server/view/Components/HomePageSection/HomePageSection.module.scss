@@ -33,8 +33,13 @@
   flex-direction: column;
 }
 
+.content {
+  width: 75%;
+  margin: auto;
+}
+
 .header {
-  font-size: 1.25rem;
+  font-size: 3rem;
 
   padding-bottom: 20px;
 }

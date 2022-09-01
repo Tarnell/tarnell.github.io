@@ -1,0 +1,35 @@
+$text-color: white;
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: auto;
+  border: 10px black;
+  border-style: double;
+  background-color: rgba(0,0,0, 0.4);
+  border-radius: 10px;
+}
+
+.headerWrapper {
+  width: 80%;
+  padding-top: 10px;
+  margin: 20px auto;
+}
+
+.header {
+  font-size: 3rem;
+  color: $text-color;
+  font-style: italic;
+}
+
+.copyWrapper {
+  width: 80%;
+  margin: 20px auto;
+  color: $text-color;
+
+}
+
+.copy {
+  font-size: 1.5rem;
+}
