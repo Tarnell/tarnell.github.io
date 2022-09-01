@@ -23,9 +23,9 @@ const rsvpBody = (rsvpJson) => (
       <h3>Guest One Attending: ${rsvpJson.guests[0].attending}</h3>
     </p>
     <p>
-      <h3>Guest One Name: ${rsvpJson.guests[1].name}</h3>
-      <h3>Guest One Email: ${rsvpJson.guests[1].email}</h3>
-      <h3>Guest One Attending: ${rsvpJson.guests[1].attending}</h3>
+      <h3>Guest Two Name: ${rsvpJson.guests[1].name}</h3>
+      <h3>Guest Two Email: ${rsvpJson.guests[1].email}</h3>
+      <h3>Guest Two Attending: ${rsvpJson.guests[1].attending}</h3>
     </p>
     <h3>Transportation Required? - ${rsvpJson.transportation} </h3>
     <h3>Bring children ? - ${rsvpJson.children} </h3>
