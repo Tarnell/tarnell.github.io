@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
 
+const port = process.env.PORT || 5000;
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -43,4 +44,9 @@ app.get('/api/getImages', (req, res) => {
 
   res.setHeader('Content-Type', 'application/json');
   res.end(JSON.stringify(images));
+});
+
+// start the Express server
+app.listen(port, () => {
+  console.log(`Server is running on port: ${port}`);
 });
