@@ -2,11 +2,13 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
+const mailer = require('./sendgrid');
 
 const port = process.env.PORT || 5000;
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(cors());
 
 app.use(express.static(path.join(__dirname, '/dist')));
@@ -15,8 +17,18 @@ app.get('/', (req, res) => {
   res.render(path.join(__dirname, '/dist/index.html'));
 });
 
-app.post('/api/writeGuest', (req, res) => {
-  res.status(200).send('Write Guest Called Successfully');
+const RSVP_KEY = 'RfyiVqwygot5xO6a';
+
+app.post('/api/submitRsvp', (req, res) => {
+  if (req.body.authCode === RSVP_KEY) {
+    mailer.sendRsvpEmail(req.body)
+      .then((resp) => {
+        res.status(200).send({ message: `Email sent succesfully: ${resp}` });
+      })
+      .catch((err) => {
+        res.status(500).send({ message: `Error Sending email: ${err}` });
+      });
+  }
 });
 
 app.get('/api/getImage', (req, res) => {

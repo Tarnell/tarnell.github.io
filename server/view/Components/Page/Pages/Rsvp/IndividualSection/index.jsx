@@ -1,17 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './IndividualSection.module.scss';
 
-const IndividualSection = ({ index, attendingCallback }) => {
-  const [attending, setAttending] = useState('');
+const IndividualSection = ({ index, setGuestCallback, attendingCallback }) => {
+  const [guestAttending, setGuestAttending] = useState(false);
+  const [guestName, setGuestName] = useState('');
+  const [guestEmail, setGuestEmail] = useState('');
+
   const onAttendingChange = (e) => {
-    if (e.currentTarget.value === 'ATTENDING') {
+    const { value } = e.currentTarget;
+    const isAttending = value === 'true';
+
+    if (isAttending) {
       attendingCallback(1);
     } else {
       attendingCallback(-1);
+      setGuestEmail('');
     }
-    setAttending(e.currentTarget.value);
+    setGuestAttending(isAttending);
   };
+
+  useEffect(() => {
+    setGuestCallback(guestAttending, guestEmail, guestName);
+  }, [guestAttending, guestEmail, guestName]);
 
   return (
     <div className={styles.individualSection}>
@@ -19,6 +30,7 @@ const IndividualSection = ({ index, attendingCallback }) => {
         <input
           type="text"
           placeholder="Name"
+          onChange={(e) => setGuestName(e.currentTarget.value)}
         />
       </div>
       <div className={styles.attendance}>
@@ -27,17 +39,18 @@ const IndividualSection = ({ index, attendingCallback }) => {
           <input
             type="radio"
             id={`${index}_attending`}
-            name={`${index}rsvp_status`}
-            value="ATTENDING"
-            onChange={onAttendingChange}
+            name={`${index}_rsvp_status`}
+            value
+            onClick={onAttendingChange}
           />
         </label>
         {
-          attending === 'ATTENDING' && (
+          guestAttending && (
             <div className={styles.email}>
               <input
                 type="text"
                 placeholder="Email"
+                onChange={(e) => setGuestEmail(e.currentTarget.value)}
               />
             </div>
           )
@@ -47,9 +60,9 @@ const IndividualSection = ({ index, attendingCallback }) => {
           <input
             type="radio"
             id={`${index}_declining`}
-            name={`${index}rsvp_status`}
-            value="DECLINING"
-            onChange={onAttendingChange}
+            name={`${index}_rsvp_status`}
+            value={false}
+            onClick={onAttendingChange}
           />
         </label>
       </div>
@@ -77,6 +90,7 @@ const IndividualSection = ({ index, attendingCallback }) => {
 
 IndividualSection.propTypes = {
   index: PropTypes.number.isRequired,
+  setGuestCallback: PropTypes.func.isRequired,
   attendingCallback: PropTypes.func.isRequired,
 };
 
