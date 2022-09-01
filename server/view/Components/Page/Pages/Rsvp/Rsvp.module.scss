@@ -1,5 +1,66 @@
 .rsvp {
   display: flex;
+  flex-direction: column;
   padding: 100px;
-  background: red;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.eventDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.transportation {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.transportationOption {
+  display: flex;
+  justify-content: right;
+  width: 200px;
+  margin: auto;
+}
+
+.submitSection {
+  margin-top: 20px;
+}
+
+.childSupport {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.childOption {
+  display: flex;
+  justify-content: right;
+  width: 50px;
+  margin: auto;
+}
+
+.button{
+  width: 135px;
+  height: 40px;
+  border: none;
+  outline: none;
+  background: #2f2f2f;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 40px;
+  text-align: center;
+  box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
 }

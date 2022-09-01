@@ -31,7 +31,7 @@ const GalleryItem = ({ assetId, focusIndex, focusImageCallback }) => {
         className={`${styles.galleryItem} card-img-top`}
         key={assetId}
         src={image}
-        alt="test"
+        alt="Engagement"
       />
     </div>
 

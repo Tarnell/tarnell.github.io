@@ -1,11 +1,10 @@
 .galleryItemContainer {
-  width: 20%;
-  height: 500px;
-  background-color: gray;
-  display: inline-block;
+  flex: 25%;
+  max-width: 25%;
 }
 
 .galleryItem {
+  vertical-align: middle;
   width: 100%;
   height: 100%;
 }
