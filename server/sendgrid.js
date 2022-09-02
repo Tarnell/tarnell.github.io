@@ -1,7 +1,6 @@
 const sendgrid = require('@sendgrid/mail');
 
-const SENDGRID_API_KEY = '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';
-
+const { SENDGRID_API_KEY } = process.env;
 sendgrid.setApiKey(SENDGRID_API_KEY);
 
 const rsvpSubject = (rsvpJson) => {
